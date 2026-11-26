@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.env.local
+*.tsbuildinfo
+.DS_Store
+# Original copies of the illustrations; the site uses src/assets
+/assets/
