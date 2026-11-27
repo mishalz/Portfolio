@@ -1,4 +1,5 @@
 import { site } from '../config'
+import { ExternalLink } from './ExternalLink'
 
 /** Last meaningful part of a profile URL, e.g. "in/your-handle" or "mishalz". */
 const handle = (url: string) => url.replace(/^https?:\/\/(www\.)?[^/]+\//, '').replace(/\/$/, '')
@@ -24,19 +25,18 @@ export function Contact() {
           <p className="contact__place">{site.location}</p>
         </div>
         <ul className="channels">
-          {channels.map((c) => (
-            <li key={c.label}>
-              <a
-                href={c.href}
-                download={c.download}
-                {...(c.external && { target: '_blank', rel: 'noopener noreferrer' })}
-              >
-                <span className="channels__label">{c.label}</span>{' '}
-                <span className="channels__value">{c.value}</span>{' '}
-                <span className="channels__arrow" aria-hidden="true">{c.download ? '↓' : '↗'}</span>
-              </a>
-            </li>
-          ))}
+          {channels.map((c) => {
+            const Link = c.external ? ExternalLink : 'a'
+            return (
+              <li key={c.label}>
+                <Link href={c.href} download={c.download}>
+                  <span className="channels__label">{c.label}</span>{' '}
+                  <span className="channels__value">{c.value}</span>{' '}
+                  <span className="channels__arrow" aria-hidden="true">{c.download ? '↓' : '↗'}</span>
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

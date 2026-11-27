@@ -1,0 +1,19 @@
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 32px;
+  padding: 12px clamp(16px, 3vw, 32px);
+  background: var(--paper); border-bottom: 1px solid var(--line);
+}
+.nav__brand { display: flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; letter-spacing: -0.02em; }
+.nav__brand::before { content: ''; width: 12px; height: 12px; background: var(--berry); }
+.nav ul { display: flex; gap: 24px; }
+.nav li a { text-decoration: none; font-size: .92rem; }
+.nav li a:hover { text-decoration: underline; }
+.nav__actions { display: flex; gap: 8px; margin-left: auto; }
+
+@media (max-width: 860px) {
+  html { scroll-padding-top: 110px; }
+  .nav { flex-wrap: wrap; gap: 10px 16px; }
+  .nav nav { order: 3; width: 100%; }
+  .nav ul { gap: 20px; }
+}

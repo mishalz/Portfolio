@@ -1,0 +1,31 @@
+/* Selectable options, used by the app walkthrough and the About panel. */
+.option { display: grid; text-align: left; cursor: pointer; border: 0; background: transparent; color: var(--muted); font: inherit; }
+.option:hover, .option[aria-pressed='true'] { background: var(--wash); }
+.option[aria-pressed='true'] { color: var(--ink); }
+.option__title { display: flex; align-items: baseline; gap: 10px; letter-spacing: -0.015em; }
+.option__title::before { content: ''; width: 7px; height: 7px; flex: none; background: var(--marker); }
+.option__body { padding-left: 17px; }
+
+/* Vertical list, marked on the left. */
+.options--stacked { display: grid; grid-auto-rows: 1fr; }
+.options--stacked .option { align-content: center; gap: 8px; padding: 22px 28px; border-left: 2px solid transparent; }
+.options--stacked .option + .option { border-top: 1px solid var(--line); }
+.options--stacked .option[aria-pressed='true'] { border-left-color: var(--marker); }
+.options--stacked .option__title { font-size: 1.2rem; }
+.options--stacked .option__body { font-size: .94rem; }
+
+/* Side-by-side steps, marked on top. */
+.options--row { display: grid; grid-template-columns: repeat(3, 1fr); }
+.options--row .option { align-content: start; gap: 6px; padding: 18px 24px 22px; border-top: 2px solid transparent; }
+.options--row .option + .option { border-left: 1px solid var(--line); }
+.options--row .option[aria-pressed='true'] { border-top-color: var(--marker); }
+.options--row .option__title { font-size: 1.15rem; }
+.options--row .option__body { font-size: .92rem; }
+
+/* On phones the row becomes a vertical list. */
+@media (max-width: 600px) {
+  .options--row { grid-template-columns: 1fr; }
+  .options--row .option { padding: 14px 16px; border-top: 0; border-left: 2px solid transparent; }
+  .options--row .option + .option { border-left: 2px solid transparent; border-top: 1px solid var(--line); }
+  .options--row .option[aria-pressed='true'] { border-left-color: var(--marker); }
+}

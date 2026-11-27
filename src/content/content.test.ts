@@ -1,4 +1,6 @@
+import { about } from './about'
 import { projects } from './projects'
+import { dandelionScreens } from './screens'
 import { experience } from './experience'
 import { skills } from './skills'
 
@@ -21,5 +23,13 @@ describe('content integrity', () => {
   it('has experience and skills', () => {
     expect(experience.length).toBeGreaterThan(0)
     expect(Object.keys(skills).length).toBeGreaterThan(0)
+  })
+
+  it('pairs every pillar and app screen with an image', () => {
+    for (const p of about.pillars) expect(p.image.src).toBeTruthy()
+    for (const s of dandelionScreens) {
+      expect(s.image).toBeTruthy()
+      expect(s.alt).toBeTruthy()
+    }
   })
 })

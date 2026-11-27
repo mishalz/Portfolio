@@ -1,0 +1,40 @@
+.stack { display: grid; gap: 20px; }
+/* Every project is a full-width card in two columns. */
+.panel {
+  display: grid; grid-template-columns: 1fr 1.3fr; column-gap: 40px; align-content: start;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px;
+}
+.panel--shot { grid-template-columns: 1fr 1.15fr; }
+.panel > div > .bullets:first-child { margin-top: 0; }
+.tagline { font-family: var(--font-serif); font-size: 1.15rem; color: var(--berry); margin: 8px 0 14px; }
+.note { font-size: .86rem; color: var(--muted); margin-top: 18px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 20px; font-weight: 500; }
+.links a { white-space: nowrap; }
+
+.facts { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, max-content); gap: 24px; margin: 22px 0; }
+.facts div { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
+.facts dd { font-size: 2rem; line-height: 1.1; letter-spacing: -0.025em; }
+.facts dt { font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase; color: var(--muted); }
+
+.shot { margin: 0; align-self: center; }
+.shot img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.shot figcaption { font-size: .86rem; color: var(--muted); margin-top: 8px; }
+
+/* ---------- Expandable technical notes ---------- */
+.deep { grid-column: 1 / -1; border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
+.deep summary { display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; list-style: none; }
+.deep summary::-webkit-details-marker { display: none; }
+.deep summary::before { content: '+'; display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid var(--ink); border-radius: var(--radius); font-family: var(--font-mono); }
+.deep[open] summary::before { content: '−'; }
+.deep summary:focus-visible { outline: 2px solid var(--blue-green); outline-offset: 3px; }
+.deep__groups { margin-top: 20px; columns: 2; column-gap: 40px; }
+.deep section { break-inside: avoid; }
+.deep h4 { font-size: 1.05rem; font-weight: 500; }
+.deep .bullets { margin: 10px 0 22px; }
+
+@media (max-width: 860px) {
+  .panel { display: block; padding: 24px; }
+  .panel > div > .bullets:first-child { margin-top: 16px; }
+  .deep__groups { columns: 1; }
+  .shot { margin-top: 22px; }
+}

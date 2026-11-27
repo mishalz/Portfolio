@@ -1,0 +1,10 @@
+/* Ruled rows: dates on the left, detail on the right. */
+.row { display: grid; grid-template-columns: 240px 1fr; gap: 24px; border-top: 1px solid var(--line); padding: 32px 0; }
+.row time { padding-top: 6px; }
+.row .bullets { margin-bottom: 0; max-width: 68ch; }
+.row p { color: var(--muted); margin-top: 6px; }
+.rows + .label { margin: 48px 0 16px; }
+
+@media (max-width: 860px) {
+  .row { grid-template-columns: 1fr; gap: 12px; }
+}

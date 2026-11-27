@@ -1,0 +1,18 @@
+/* The closing panel and footer share the dark surface. */
+.band--forest { --marker: color-mix(in srgb, var(--berry) 45%, var(--ivory)); background: var(--forest); color: var(--ivory); }
+.contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.contact__place { font-family: var(--font-mono); font-size: .74rem; text-transform: uppercase; letter-spacing: .04em; margin-top: 32px; }
+.channels { border-bottom: 1px solid rgba(245, 245, 229, .22); }
+.channels li { border-top: 1px solid rgba(245, 245, 229, .22); }
+.channels a { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 22px 12px; text-decoration: none; transition: background .2s; }
+.channels a:hover { background: rgba(245, 245, 229, .08); }
+.channels__label { font-family: var(--font-mono); font-size: .74rem; text-transform: uppercase; color: color-mix(in srgb, var(--ivory) 70%, var(--forest)); }
+.channels__value { font-size: 1.1rem; overflow-wrap: anywhere; }
+
+.footer { padding: 28px 0; background: var(--forest); border-top: 1px solid rgba(245, 245, 229, .22); font-size: .86rem; color: color-mix(in srgb, var(--ivory) 75%, var(--forest)); }
+.footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (max-width: 860px) {
+  .contact__grid { grid-template-columns: 1fr; gap: 40px; }
+  .channels a { grid-template-columns: 80px minmax(0, 1fr) auto; gap: 12px; padding: 18px 4px; }
+}

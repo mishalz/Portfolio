@@ -1,0 +1,8 @@
+.skills { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 40px; }
+.skills__row { display: grid; align-content: start; gap: 12px; padding: 22px 0 26px; border-top: 1px solid var(--line); }
+.skills dt { font-size: 1.2rem; letter-spacing: -0.015em; }
+.skills .tags li { font-size: .82rem; padding: 7px 12px; background: var(--wash); }
+
+@media (max-width: 860px) {
+  .skills { grid-template-columns: 1fr; }
+}

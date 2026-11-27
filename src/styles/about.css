@@ -1,0 +1,20 @@
+/* The intro spans the container so it lines up with the panel below. */
+#about .section-head > div { flex: 1; }
+#about .intro { max-width: none; }
+
+/* Selectable list beside a small image. */
+.feature { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); border: 1px solid var(--line); background: var(--paper); }
+/* The image comes first in the markup so it sits on top on phones; desktop moves it right. */
+.feature__media { order: 2; position: relative; min-height: 400px; }
+.feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.reading { margin-top: 56px; }
+.reading ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 16px; }
+.reading li { display: grid; border-top: 1px solid var(--line); padding-top: 14px; }
+.reading strong { font-family: var(--font-serif); font-weight: 500; font-size: 1.15rem; }
+.reading span { font-size: .9rem; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .feature, .reading ul { grid-template-columns: 1fr; }
+  .feature__media { order: 0; min-height: 260px; }
+}

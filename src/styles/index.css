@@ -1,0 +1,10 @@
+/* Order matters: shared styles first, then one file per area of the page. */
+@import './base.css';
+@import './nav.css';
+@import './hero.css';
+@import './options.css';
+@import './projects.css';
+@import './experience.css';
+@import './skills.css';
+@import './about.css';
+@import './contact.css';

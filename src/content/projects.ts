@@ -1,5 +1,4 @@
 import tadabburGraph from '../assets/tadabbur/graph.png'
-import { links } from '../config'
 
 export interface Project {
   id: string
@@ -14,13 +13,12 @@ export interface Project {
   /** Deeper technical notes, shown behind "Technical details". */
   details: { title: string; points: string[] }[]
   stack: string[]
-  featured: boolean
   links: { label: string; href: string }[]
   note?: string
 }
 
-const compact = (items: ({ label: string; href?: string })[]) =>
-  items.filter((l): l is { label: string; href: string } => Boolean(l.href))
+const TADABBUR_REPO = 'https://github.com/mishalz/Tadabbur'
+const RAABTA_REPO = 'https://github.com/mishalz/Raabta'
 
 export const projects: Project[] = [
   {
@@ -80,8 +78,7 @@ export const projects: Project[] = [
       },
     ],
     stack: ['TypeScript', 'React Native (Expo)', 'Hono', 'Cloudflare Workers', 'Postgres (Neon)', 'Drizzle ORM', 'Zod', 'Jest', 'Vitest', 'LangSmith'],
-    featured: true,
-    links: compact([{ label: 'Visit', href: links.dandelion }]),
+    links: [],
     note: 'Private repository, so the code is not public. Happy to walk through it.',
   },
   {
@@ -132,12 +129,11 @@ export const projects: Project[] = [
       },
     ],
     stack: ['React', 'Vite', 'D3', 'Node.js', 'Express', 'Postgres', 'GitHub Actions'],
-    featured: true,
     links: [
-      { label: 'Live site', href: links.tadabbur },
-      { label: 'Source', href: links.tadabburRepo },
-      { label: 'Pull requests', href: `${links.tadabburRepo}/pulls?q=is%3Apr+is%3Amerged` },
-      { label: 'Auth design', href: `${links.tadabburRepo}/blob/main/docs/authentication.md` },
+      { label: 'Live site', href: 'https://benevolent-rolypoly-b74a4a.netlify.app/' },
+      { label: 'Source', href: TADABBUR_REPO },
+      { label: 'Pull requests', href: `${TADABBUR_REPO}/pulls?q=is%3Apr+is%3Amerged` },
+      { label: 'Auth design', href: `${TADABBUR_REPO}/blob/main/docs/authentication.md` },
     ],
   },
   {
@@ -169,10 +165,9 @@ export const projects: Project[] = [
       },
     ],
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Docker', 'Kubernetes', 'Google Cloud'],
-    featured: false,
     links: [
-      { label: 'Source', href: links.raabta },
-      { label: 'Project report', href: `${links.raabta}/blob/main/cc-project-report-raabta.pdf` },
+      { label: 'Source', href: RAABTA_REPO },
+      { label: 'Project report', href: `${RAABTA_REPO}/blob/main/cc-project-report-raabta.pdf` },
     ],
   },
 ]

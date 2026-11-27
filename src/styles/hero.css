@@ -1,0 +1,32 @@
+.hero { overflow: hidden; padding: 40px 0 72px; }
+.hero__body { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 860px; }
+.hero__body .kicker { margin-bottom: 12px; }
+.hero__body .intro { max-width: 100%; margin-top: 14px; font-size: 1.1rem; text-wrap: balance; }
+.soft { color: color-mix(in srgb, var(--olive) 72%, var(--paper)); }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+
+/* ---------- App walkthrough ---------- */
+.app { margin: 32px 0 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); overflow: hidden; }
+.app__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+.app__head .kicker { margin: 0; }
+.app__head a { font-size: .92rem; font-weight: 500; }
+.app__stage { position: relative; overflow: hidden; background: var(--sage); padding: 48px 24px; }
+/* One large, faint mark from the logo. */
+.app__mark { position: absolute; right: -4%; bottom: -14%; width: 46%; color: var(--berry); opacity: .14; pointer-events: none; }
+.app__mark svg { display: block; width: 100%; }
+.app__screens { position: relative; display: flex; justify-content: center; align-items: center; gap: clamp(16px, 4vw, 56px); }
+.phone { width: min(28%, 232px); padding: 6px; background: var(--sage); border: 1px solid color-mix(in srgb, var(--forest) 28%, transparent); border-radius: 36px; transition: transform .3s, border-color .3s; }
+.phone img { display: block; width: 100%; height: auto; border-radius: 13.5% / 6.2%; }
+.phone--active { transform: scale(1.07); border-color: var(--forest); }
+
+@media (max-width: 860px) {
+  .hero { padding: 72px 0; }
+}
+
+@media (max-width: 600px) {
+  /* One readable screen at a time, chosen with the steps below it. */
+  .phone:not(.phone--active) { display: none; }
+  .phone--active { width: min(78%, 250px); transform: none; }
+  .app__stage { padding: 28px 16px; }
+  .app__head { padding: 14px 16px; }
+}
