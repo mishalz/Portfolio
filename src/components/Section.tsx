@@ -8,17 +8,15 @@ interface Props {
   intro?: string
   /** Background surface; alternate these between neighbouring sections. */
   tone: 'paper' | 'ivory'
-  /** Colour of the square markers. */
-  marker: 'berry' | 'blue'
   /** Optional decorative drawing beside the heading. */
   art?: ReactNode
   children: ReactNode
 }
 
-/** Full-bleed band with corner markers, a header block and a centred container. */
-export function Section({ id, kicker, title, intro, tone, marker, art, children }: Props) {
+/** Full-bleed band with a header block and a centred container. */
+export function Section({ id, kicker, title, intro, tone, art, children }: Props) {
   return (
-    <section id={id} className={`band band--${tone} band--${marker}`} aria-labelledby={`${id}-title`}>
+    <section id={id} className={`band band--${tone}`} aria-labelledby={`${id}-title`}>
       <div className="container">
         <header className="section-head">
           <div>

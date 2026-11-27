@@ -1,25 +1,27 @@
 import { useState } from 'react'
 import { about } from '../content/about'
-import birds from '../assets/birds.jpeg'
 import pond from '../assets/pond.jpeg'
-import slopes from '../assets/slopes.jpeg'
+import valley from '../assets/valley.jpeg'
+import bookshelf from '../assets/bookshelf.jpg'
 import { Section } from './Section'
 
 // One illustration per pillar, in the same order as `about.pillars`.
 const pillarImages = [
-  { src: birds, position: 'center 58%' },
-  { src: pond, position: 'center 60%' },
-  { src: slopes, position: 'center 38%' },
+  { src: pond, position: 'center 62%' }, // Framed on the boat.
+  { src: valley, position: 'center 70%' },
+  { src: bookshelf, position: 'center 68%' },
 ]
 
 export function About() {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(1) // Nature, the middle column, is shown first.
   const image = pillarImages[active]
 
   return (
-    <Section id="about" tone="ivory" marker="berry" kicker="Beyond the code" title="More than the code I write" intro={about.intro}>
+    <Section id="about" tone="paper" kicker="Beyond the code" title="More than the code I write" intro={about.intro}>
       <div className="feature">
-        <img className="feature__image" src={image.src} style={{ objectPosition: image.position }} alt="" />
+        <div className="feature__media">
+          <img src={image.src} style={{ objectPosition: image.position }} alt="" />
+        </div>
         <div className="feature__tabs">
           {about.pillars.map((p, i) => (
             <button key={p.title} type="button" className="tab" aria-pressed={i === active} onClick={() => setActive(i)}>

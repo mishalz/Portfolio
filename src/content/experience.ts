@@ -7,22 +7,14 @@ export interface Role {
 
 export const experience: Role[] = [
   {
-    title: 'Software Engineer (Contract)',
-    org: 'Top Notch',
-    period: 'Jul 2026 – Oct 2026',
+    title: 'Software Engineer',
+    org: 'Barakah Labs',
+    period: 'Jun 2025 – Oct 2026',
     points: [
-      'Built and launched a responsive Shopify storefront for a premium sketchbooks business, on the launch date, from requirements and design references.',
-      'Averaged a 2.5% conversion rate over four months.',
-      'Worked solo with regular owner check-ins, explaining technical trade-offs to reach agreement.',
-    ],
-  },
-  {
-    title: 'Software Engineer (Contract)',
-    org: 'Zaeem Watches',
-    period: 'Dec 2025 – Feb 2026',
-    points: [
-      'Diagnosed and fixed 10+ customer-facing issues across search, navigation, product discovery and checkout.',
-      'Redesigned key storefront sections so they work across phones, tablets and desktops.',
+      'Led delivery on every project, working in a team with 2 other colleagues: ran daily stand-ups, owned requirements through to delivery, and was the main point of contact for clients.',
+      'Built and launched a responsive Shopify storefront solo for a small-scale business, from brief and design references to on-schedule launch. The site averaged a 2.5% conversion rate over its first four months.',
+      'For another client, diagnosed and fixed 10+ customer-facing production issues across search, navigation, product discovery and checkout, and rebuilt key storefront sections to work across mobile, tablet and desktop.',
+      'Worked with each client owner through regular check-ins, explaining technical limits and trade-offs in plain terms and agreeing scope before building.',
     ],
   },
   {
@@ -30,8 +22,8 @@ export const experience: Role[] = [
     org: 'ByteCorp',
     period: 'Jul 2022 – Oct 2022',
     points: [
-      'Built features for a React single-page app with reusable components and clear state management.',
-      'Converted components to TypeScript, catching type errors before the browser.',
+      'Migrated existing React components to TypeScript, catching type errors during development before they reached the browser.',
+      'Developed features for a React single-page application using reusable components and structured state management.',
     ],
   },
 ]

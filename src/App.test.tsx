@@ -7,7 +7,7 @@ describe('App', () => {
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
     for (const name of [
       'More than the code I write',
-      'Projects with a purpose',
+      'Projects',
       "Where I've worked",
       'The tools I build with',
       "Let's build something meaningful",
@@ -29,12 +29,14 @@ describe('App', () => {
     expect(screen.getByRole('navigation', { name: 'Primary' })).toBeInTheDocument()
   })
 
-  it('switches the highlighted about pillar', () => {
+  it('highlights Nature first and switches pillar on click', () => {
     render(<App />)
     const nature = screen.getByRole('button', { name: /^Nature/ })
-    expect(nature).toHaveAttribute('aria-pressed', 'false')
-    fireEvent.click(nature)
+    const people = screen.getByRole('button', { name: /^People/ })
     expect(nature).toHaveAttribute('aria-pressed', 'true')
+    fireEvent.click(people)
+    expect(people).toHaveAttribute('aria-pressed', 'true')
+    expect(nature).toHaveAttribute('aria-pressed', 'false')
   })
 
   it('shows the Dandelion screens in the hero', () => {
@@ -42,5 +44,17 @@ describe('App', () => {
     const screens = screen.getByRole('list', { name: 'Dandelion app screens' })
     expect(screens.children).toHaveLength(3)
     expect(screen.getByRole('img', { name: 'Dandelion check-in screen' })).toBeInTheDocument()
+  })
+
+  it('offers each way to get in touch', () => {
+    render(<App />)
+    for (const label of ['Email', 'LinkedIn', 'GitHub', 'Résumé']) {
+      expect(screen.getByRole('link', { name: new RegExp(`^${label} `) })).toBeInTheDocument()
+    }
+  })
+
+  it('shows the Tadabbur connection graph', () => {
+    render(<App />)
+    expect(screen.getByRole('img', { name: /Tadabbur connection graph/ })).toBeInTheDocument()
   })
 })

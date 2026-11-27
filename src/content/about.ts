@@ -1,11 +1,11 @@
 export const about = {
   intro:
-    'I am a full-stack engineer who likes taking a feature from a design file to tested, deployed code. I care most about building things that make a real difference to people, which is why I am co-building Dandelion, a journaling app for nightly reflection.',
+    'Away from the keyboard, I read, hike and spend time with friends and family. I also love nature and try to spend as much time outdoors as I can.',
   pillars: [
     {
       
-      title: 'Work that matters',
-      body: 'I am drawn to products that improve how people live, think and connect. I validate the problem with real users before I write the first line of code.',
+      title: 'People',
+      body: 'I like observing people and how they behave. I enjoy meeting people from different cultures and getting to know them. People are at the core of my work, and I try to understand their needs and how to solve their problems with software.',
     },
     {
       
@@ -20,8 +20,8 @@ export const about = {
   ],
   // Replace with what you are reading now.
   reading: [
-    { title: 'Your current book', author: 'Author name' },
-    { title: 'A book that changed your mind', author: 'Author name' },
-    { title: 'An idea you keep coming back to', author: 'Author name' },
+    { title: 'Heart Centered Design', author: 'Peter Gould' },
+    { title: '1984 and Animal Farm', author: 'George Orwell' },
+    { title: 'The Design of Everyday Things', author: 'Don Norman' },
   ],
 }

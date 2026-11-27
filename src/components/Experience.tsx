@@ -1,17 +1,14 @@
 import { education, experience } from '../content/experience'
-import { Birds } from './Ink'
 import { Section } from './Section'
 
 export function Experience() {
   return (
     <Section
       id="experience"
-      tone="ivory"
-      marker="berry"
+      tone="paper"
       kicker="Experience"
       title="Where I've worked"
-      intro="Storefronts for small businesses, and a grounding in React and TypeScript."
-      art={<Birds />}
+      intro="Hands-on client delivery, and a grounding in React and TypeScript."
     >
       <ol className="rows">
         {experience.map((r) => (

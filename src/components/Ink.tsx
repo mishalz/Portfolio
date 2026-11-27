@@ -1,5 +1,3 @@
-/** Small SVG accents. Purely decorative. */
-
 /** The Dandelion logo, tilted 45° to the right. */
 export function Dandelion() {
   return (
@@ -13,25 +11,6 @@ export function Dandelion() {
           <path d="M30.8652 46.0129C32.8923 48.8746 35.9328 54.1211 34.5169 57.9367C33.2947 60.3214 28.4358 60.3214 27.2136 57.9367C25.7976 54.1211 28.8382 48.8746 30.8652 46.0129Z" />
         </g>
       </g>
-    </svg>
-  )
-}
-
-const BIRDS = [
-  [20, 130, 1.3], [62, 104, 1], [58, 150, 0.8], [104, 82, 1.15],
-  [118, 124, 0.7], [146, 56, 0.9], [160, 94, 0.6], [180, 32, 0.7],
-] as const
-
-export function Birds() {
-  return (
-    <svg className="ink" viewBox="0 0 220 200" aria-hidden="true" focusable="false">
-      {BIRDS.map(([x, y, s]) => (
-        <path
-          key={`${x}-${y}`}
-          transform={`translate(${x} ${y}) scale(${s})`}
-          d="M-18-8Q-6-10 0 2Q8-14 22-14Q8-6 2 9Q-4-2-18-8Z"
-        />
-      ))}
     </svg>
   )
 }

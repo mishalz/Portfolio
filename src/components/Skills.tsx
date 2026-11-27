@@ -5,8 +5,7 @@ export function Skills() {
   return (
     <Section
       id="skills"
-      tone="paper"
-      marker="blue"
+      tone="ivory"
       kicker="Skills"
       title="The tools I build with"
       intro="From mobile and web interfaces to APIs, data, deployment and LLM evaluation."

@@ -10,6 +10,7 @@ describe('content integrity', () => {
       expect(p.title).toBeTruthy()
       expect(p.stack.length).toBeGreaterThan(0)
       expect(p.highlights.length).toBeGreaterThan(0)
+      for (const d of p.details) expect(d.points.length).toBeGreaterThan(0)
     }
   })
 
