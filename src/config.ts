@@ -11,7 +11,7 @@ export const site = {
   role: 'Software Engineer',
   url: env.VITE_SITE_URL || 'https://your-domain.example',
   email: env.VITE_EMAIL || PLACEHOLDER_EMAIL,
-  location: env.VITE_LOCATION || 'City, Country',
+  location: 'London, UK',
   github: env.VITE_GITHUB_URL || 'https://github.com/mishalz',
   linkedin: env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/your-handle',
   resume: env.VITE_RESUME_URL || '/resume.pdf',

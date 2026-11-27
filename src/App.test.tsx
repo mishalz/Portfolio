@@ -36,4 +36,11 @@ describe('App', () => {
     fireEvent.click(nature)
     expect(nature).toHaveAttribute('aria-pressed', 'true')
   })
+
+  it('shows the Dandelion screens in the hero', () => {
+    render(<App />)
+    const screens = screen.getByRole('list', { name: 'Dandelion app screens' })
+    expect(screens.children).toHaveLength(3)
+    expect(screen.getByRole('img', { name: 'Dandelion check-in screen' })).toBeInTheDocument()
+  })
 })

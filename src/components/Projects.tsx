@@ -1,5 +1,4 @@
 import { projects, type Project } from '../content/projects'
-import meadow from '../assets/meadow.jpeg'
 import { Dandelion } from './Ink'
 import { Section } from './Section'
 
@@ -28,7 +27,7 @@ function ProjectCard({ project: p, className }: { project: Project; className: s
 }
 
 export function Projects() {
-  // The first project gets the large showcase; the rest sit in a grid below.
+  // The first project gets a full-width panel; the rest sit in a grid below.
   const [lead, ...others] = projects
 
   return (
@@ -41,9 +40,7 @@ export function Projects() {
       intro="Products and tools for reflection, study and connection."
       art={<Dandelion />}
     >
-      <div className="showcase" style={{ backgroundImage: `url(${meadow})` }}>
-        <ProjectCard project={lead} className="showcase__card glass" />
-      </div>
+      <ProjectCard project={lead} className="panel panel--lead" />
       <div className="grid grid--2">
         {others.map((p) => <ProjectCard key={p.id} project={p} className="panel" />)}
       </div>
