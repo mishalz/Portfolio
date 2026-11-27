@@ -1,38 +1,35 @@
+import { useState } from 'react'
 import { dandelionScreens } from '../content/screens'
-import { projects } from '../content/projects'
-import backdrop from '../assets/moonlit-valley.jpg'
 import { Dandelion } from './Ink'
 
-// Positions and timing are set per seed in CSS (.seed:nth-of-type).
-const SEEDS = [0, 1, 2, 3]
-
-/** Dandelion app screens framed in glass over a painted night sky. */
+/** A framed, three-step walkthrough of the Dandelion app. */
 export function AppShowcase() {
-  const dandelion = projects.find((p) => p.id === 'dandelion')
+  const [active, setActive] = useState(1) // The middle step is highlighted first.
 
   return (
     <figure className="app">
+      <figcaption className="app__head">
+        <p className="kicker">Dandelion · a nightly reflection app I'm co-building</p>
+        <a href="#projects">Read more</a>
+      </figcaption>
       <div className="app__stage">
-        <img className="app__backdrop" src={backdrop} alt="" />
-        {SEEDS.map((n) => (
-          <span key={n} className="seed" aria-hidden="true"><Dandelion /></span>
-        ))}
+        <span className="app__mark" aria-hidden="true"><Dandelion /></span>
         <ul className="app__screens" aria-label="Dandelion app screens">
-          {dandelionScreens.map((s) => (
-            <li key={s.title} className="phone glass">
-              <img className="phone__screen" src={s.image} alt={`Dandelion ${s.title.toLowerCase()} screen`} width={390} height={844} />
+          {dandelionScreens.map((s, i) => (
+            <li key={s.title} className={i === active ? 'phone phone--active' : 'phone'}>
+              <img src={s.image} alt={s.alt} width={640} height={1391} />
             </li>
           ))}
         </ul>
       </div>
-      {dandelion && (
-        <figcaption>
-          <p>
-            <strong>{dandelion.title}</strong>, an AI-powered journaling app I'm co-building.{' '}
-            <a href="#projects">Read more</a>
-          </p>
-        </figcaption>
-      )}
+      <div className="app__steps">
+        {dandelionScreens.map((s, i) => (
+          <button key={s.title} type="button" className="step" aria-pressed={i === active} onClick={() => setActive(i)}>
+            <span className="step__title">{`0${i + 1} ${s.title}`}</span>
+            <span className="step__caption">{s.caption}</span>
+          </button>
+        ))}
+      </div>
     </figure>
   )
 }

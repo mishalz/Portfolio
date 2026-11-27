@@ -5,6 +5,7 @@
   --berry: #80475e;
   --forest: #223812;
   --olive: #556130;
+  --sage: color-mix(in srgb, var(--olive) 24%, var(--ivory));
 
   /* Roles */
   --paper: #fefefb;
@@ -109,33 +110,27 @@ li { list-style: none; }
 .soft { color: color-mix(in srgb, var(--olive) 72%, var(--paper)); }
 .hero .actions { justify-content: center; margin-top: 20px; }
 
-/* ---------- Hero app showcase ---------- */
-.glass { background: rgba(254, 254, 251, .55); border: 1px solid rgba(255, 255, 255, .65); box-shadow: 0 20px 48px rgba(34, 56, 18, .35); }
-@supports (backdrop-filter: blur(1px)) {
-  .glass { background: rgba(254, 254, 251, .32); -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); }
-}
-.app { margin: 32px 0 0; }
-.app__stage { position: relative; overflow: hidden; border-radius: var(--radius); padding: 40px 24px; }
-.app__backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
-.app__screens { position: relative; display: flex; justify-content: center; align-items: center; gap: clamp(12px, 3vw, 36px); }
-.phone { width: min(30%, 236px); padding: 8px; border-radius: 34px; }
-.phone:nth-child(2) { width: min(33%, 262px); }
-/* The radius matches the rounded corners in the screenshots. */
-.phone__screen { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; border-radius: 12.5% / 5.8%; }
-.app figcaption { padding-top: 18px; }
-.app figcaption p { font-family: var(--font-serif); font-size: 1.05rem; }
-
-/* Seeds from the logo, drifting over the sky. */
-.seed { position: absolute; width: 38px; color: var(--paper); animation: drift 9s ease-in-out infinite alternate; }
-.seed svg { display: block; width: 100%; fill: currentColor; }
-.seed:nth-of-type(1) { top: 10%; left: 7%; }
-.seed:nth-of-type(2) { top: 5%; left: 27%; width: 24px; animation-duration: 12s; animation-delay: -4s; }
-.seed:nth-of-type(3) { top: 16%; right: 9%; width: 46px; animation-duration: 11s; animation-delay: -7s; }
-.seed:nth-of-type(4) { top: 3%; right: 26%; width: 28px; animation-duration: 14s; animation-delay: -2s; }
-@keyframes drift {
-  from { transform: translate(0, 0) rotate(-8deg); }
-  to { transform: translate(26px, -18px) rotate(14deg); }
-}
+/* ---------- Hero app walkthrough ---------- */
+.app { margin: 32px 0 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); overflow: hidden; }
+.app__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+.app__head .kicker { margin: 0; }
+.app__head a { font-size: .92rem; font-weight: 500; }
+.app__stage { position: relative; overflow: hidden; background: var(--sage); padding: 48px 24px; }
+/* One large, faint mark from the logo. */
+.app__mark { position: absolute; right: -4%; bottom: -14%; width: 46%; color: var(--berry); opacity: .14; pointer-events: none; }
+.app__mark svg { display: block; width: 100%; }
+.app__screens { position: relative; display: flex; justify-content: center; align-items: center; gap: clamp(16px, 4vw, 56px); }
+.phone { width: min(28%, 232px); padding: 6px; background: var(--sage); border: 1px solid color-mix(in srgb, var(--forest) 28%, transparent); border-radius: 36px; transition: transform .3s, border-color .3s; }
+.phone img { display: block; width: 100%; height: auto; border-radius: 13.5% / 6.2%; }
+.phone--active { transform: scale(1.07); border-color: var(--forest); }
+.app__steps { display: grid; grid-template-columns: repeat(3, 1fr); }
+.step { display: grid; align-content: start; gap: 6px; text-align: left; cursor: pointer; padding: 18px 24px 22px; border: 0; border-top: 2px solid transparent; background: transparent; color: var(--muted); font: inherit; }
+.step + .step { border-left: 1px solid var(--line); }
+.step:hover { background: var(--wash); }
+.step[aria-pressed='true'] { background: var(--wash); border-top-color: var(--berry); color: var(--ink); }
+.step__title { display: flex; align-items: baseline; gap: 10px; font-size: 1.15rem; letter-spacing: -0.015em; }
+.step__title::before { content: ''; width: 7px; height: 7px; flex: none; background: var(--berry); }
+.step__caption { font-size: .92rem; padding-left: 17px; }
 
 /* ---------- About: selectable list beside a small image ---------- */
 .feature { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); border: 1px solid var(--line); background: var(--paper); }
@@ -256,10 +251,15 @@ li { list-style: none; }
 }
 
 @media (max-width: 600px) {
-  /* One readable screen is better than three tiny ones. */
-  .phone:not(:nth-child(2)) { display: none; }
-  .phone:nth-child(2) { width: min(76%, 240px); }
-  .app__stage { padding: 56px 16px 32px; }
+  /* One readable screen at a time, chosen with the steps below it. */
+  .phone:not(.phone--active) { display: none; }
+  .phone--active { width: min(78%, 250px); transform: none; }
+  .app__stage { padding: 28px 16px; }
+  .app__head { padding: 14px 16px; }
+  .app__steps { grid-template-columns: 1fr; }
+  .step { padding: 14px 16px; border-top: 0; border-left: 2px solid transparent; }
+  .step + .step { border-left: 2px solid transparent; border-top: 1px solid var(--line); }
+  .step[aria-pressed='true'] { border-left-color: var(--berry); }
 }
 
 @media (prefers-reduced-motion: reduce) {

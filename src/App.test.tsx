@@ -39,11 +39,15 @@ describe('App', () => {
     expect(nature).toHaveAttribute('aria-pressed', 'false')
   })
 
-  it('shows the Dandelion screens in the hero', () => {
+  it('walks through the three Dandelion screens', () => {
     render(<App />)
     const screens = screen.getByRole('list', { name: 'Dandelion app screens' })
     expect(screens.children).toHaveLength(3)
-    expect(screen.getByRole('img', { name: 'Dandelion check-in screen' })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Dandelion check-in screen' }).parentElement).toHaveClass('phone--active')
+    const lookBack = screen.getByRole('button', { name: /^03 Look back/ })
+    fireEvent.click(lookBack)
+    expect(lookBack).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('img', { name: 'Dandelion home screen' }).parentElement).toHaveClass('phone--active')
   })
 
   it('offers each way to get in touch', () => {
